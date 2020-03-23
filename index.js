@@ -128,6 +128,8 @@
         return arr;
     }
 
+//查找数组重复几次的计数，并用对象表示：
+
 //数组扁平化：
     let a = [1,2,2,3,[5,4,6,[7,8]]];//将此数组扁平化，并最终得到一个升序不重复数组
 //方法一：es6中flat()方法：
@@ -184,11 +186,41 @@
     console.log(queryUrlParameter(url));
 
 //判断两个对象是否相等
-
+    function isEqual(obj1={},obj2={}){
+        //判断是否是引用类型
+        function isCompex(vaule){
+            if(typeof vaule !=='object'||typeof vaule===null){
+                return false;
+            }
+            return true;
+        }
+        //如果不是引用类型直接比较
+        if(!isCompex(obj1)&&!isCompex(obj2)){
+            return obj1===obj2;
+        }
+        //判断是否obj1与obj2是否相等
+        if(obj1===obj2){
+            return true;
+        }
+        //判断两个引用类型的key值是否相等
+        const key1 = Object.keys(obj1).length;
+        const key2 = Object.keys(obj2).length;
+        if(key1!==key2){
+            return false;
+        }
+        //进行递归比较
+        for(let key in obj1){
+            const res = isEqual(obj1[key],obj2[key]);
+            if(!res){
+                return false
+            }
+        }
+        //全都满足
+        return true;
+    }
 
 //函数可里化:
    
-
 
 
 
