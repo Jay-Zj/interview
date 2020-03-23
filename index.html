@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-LifeClyle</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<style>
+    /* .content-box{
+        height: ;
+    } */
+</style>
+
+<body>
+    <div id="app">
+        <h3>组件间的传值：</h3>
+        <hr>
+        <my-input @add='addHandler'></my-input>
+        <my-list :list='list'></my-list>
+        <h3>自定义组件中使用-vmodel:</h3>
+        <hr>
+        <my-model v-model='text'></my-model>
+        <h3>插槽slot的使用：</h3>
+        <hr>
+        <my-slot>
+            <i slot='two'>two</i>
+            <i slot='one'>one</i>
+            <i>我是父组件传进来的内容！</i>
+            <template slot-scope='props' slot="three">
+                <div>{{props.jay}}</div>
+            </template>
+        </my-slot>
+        <h3>vue-router的使用：</h3>
+        <hr>
+        <div>
+            <router-link to="/A">A</router-link>
+            <router-link to="/B">B</router-link>
+            <router-link to="/C">C</router-link>
+            <router-view></router-view>
+        </div>
+        <h3>vuex的使用：</h3>
+        <hr>
+    </div>
+</body>
+
+<script>
+    var A = {
+        template: `
+            <h3>A</h3>
+        `
+    }
+    var B = {
+        template: `
+            <h3>B</h3>
+        `
+    }
+    var C = {
+        template: `
+            <h3>C</h3>
+        `
+    }
+    var routes = [{
+            path: '/A',
+            component: A
+        },
+        {
+            path: '/B',
+            component: B
+        },
+        {
+            path: '/C',
+            component: C
+        },
+    ]
+    var router = new VueRouter({
+        routes
+    })
+    var event = new Vue();
+    var mySlot = {
+        data: function () {
+            return {
+                age: 18
+            }
+        },
+        template: `
+            <div>
+                <div>1.匿名插槽，具名插槽：</div>
+                <slot name='one'></slot>
+                <slot>我是默认内容</slot>  
+                <slot name='two'></slot> 
+                <div>1.作用域插槽的使用：</div>
+                <slot :jay='age' name='three'>
+                    <li>作用域插槽默认内容</li>    
+                </slot> 
+            </div>
+        `
+    }
+    var myModel = {
+        model: {
+            prop: 'text',
+            event: 'change'
+        },
+        props: ['text'],
+        methods: {
+            handler: function () {
+                this.$emit('change', 5)
+            }
+        },
+        template: `
+            <div>
+                <div>{{text}}</div>
+                <button @click='handler'>clickMe</button>    
+            </div>
+        `
+    }
+    var myInput = {
+        data: function () {
+            return {
+                inputVal: ''
+            }
+        },
+        methods: {
+            addval: function () {
+                this.$emit('add', this.inputVal);
+                event.$emit('test', this.inputVal);
+                this.inputVal = '';
+            }
+        },
+        template: "<div><input v-model='inputVal'></input><button type='button' @click='addval'>添加</button></div>"
+    }
+    var myList = {
+        props: ['list'],
+        methods: {
+            del: function (index) {
+                this.list.splice(index, 1);
+            },
+            test: function (title) {
+                console.log('呵呵' + title);
+            }
+        },
+        mounted() {
+            event.$on('test', this.test);
+        },
+        watch: {
+            list: function (oldVal, val) {
+                console.log(oldVal, val);
+            }
+        },
+        template: "<div><ul><li v-for='(item,index) in list' :key='item' @click='del(index)'>{{item}}</li></ul></div>"
+    }
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+            text: 1,
+        },
+        methods: {
+            addHandler: function (inputVal) {
+                this.list.push(inputVal)
+            }
+        },
+        components: {
+            'myInput': myInput,
+            'myList': myList,
+            'myModel': myModel,
+            'mySlot': mySlot
+        },
+        router
+    })
+</script>
+
+</html>
