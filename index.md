@@ -76,10 +76,34 @@
 
 ## 1.9 常见的Dom和Bom操作
 ### 1.9.1 dom操作
+![dom](./images/dom.gif)
+
+    优化dom操作的性能：
+        1.对dom操作做缓存
+        2.将多次dom操作合并为一次操作
+
 ### 1.9.2 Bom操作
+![bom](./images/Bom1.png)
+![bom2](./images/Bom2.png)
+
+## 1.10 什么是事件委托，事件捕获，和事件冒泡
+>addEventListener 的第三个参数,默认为事件冒泡，true为捕获阶段触发，false为冒泡阶段触发
+
+![捕获](./images/buhuomaopao)   
 
 ## 1.10 浏览器储存（cookies,sessionStorage,localStorage）的区别：
+    cookie：
+        1.cookie本身是用于浏览器和服务器通讯使用。
+        2.cookie是被借用来做本地存储的。
+        3.存储空间太小，只有4KB。
+        4.可以跨页面访问，存在时长可以设置。
+        5.存储的数据每次都会随着http请求发送到server端。
 
+    sessionStorage和localStorage:
+        1.存储空间较大，最多每个域名可存储5MB.
+        2.sessionStore随着当前浏览器的关闭而销毁。
+        localStore可跨页面存在，除非主动删除一般都存在。
+        3.都使用getItem和setItem 的api 进行操作。    
 ****
 
 # 二：html/css：
@@ -458,7 +482,7 @@
 
 ****
 
-# 四：Vuw：
+# 四：Vue：
 ![vue面试题](./images/vuemianshiti)
 ## 4.1.vue基础
 ### 4.1.1.vue的生命周期有哪些，他们之间的作用，在有父子组件的情况下又是怎样的：
@@ -671,12 +695,69 @@ new Vue({
 ****
 
 # 五：react
-### 1.react组件如何通信：
-### 2.react jsx的本质是什么：
-### 3.context 是什么有何作用：
-### 4.SCU的用途：
-### 5.描述redux 的单向数据流：
-### 6.setstate是同步还是异步：
+## 1.react组件如何通信：
+    1.子传父使用传递事件的形式，在子组件触发父组件中的方法。
+    2.父传子使用props。
+    3.自定义事件的形式。
+    4.redux和context
+## 2.react jsx的本质是什么：
+
+## 3.context 是什么有何作用：
+    作用：父组件向所有的子孙组件传递数据。
+    应用：比如传递语言，主题色之类的数据。
+
+## 4.SCU的用途：
+    1.性能优化，在react组件中，当父组件变化时，无论子组件的props有无变化都将被重新渲染。
+    因而可以在scu中判断props有无变化，控制组件是否渲染。
+    2.需要配合不可变值一起使用不然可能出错。
+## 5.描述redux 的单向数据流：
+![redux](./images/redux.png)
+## 6.setstate的特性：
+    特性：
+        1.不可变值。
+        2.可能是异步的。
+        3.可能会合并
+
+![setState](./images/setState.png)
+
+## 6.什么是纯函数，什么是不可变值：
+    纯函数：返回一个新值，且没有副作用（不会改变其它值本身）。
+    不可变值：
+## 7.单组件的生命周期是怎么样的？有父子组件时又是怎么样的？
+
+## 8. ajax的请求应该放在哪个生命周期函数中？
+    放在componentDidMount里
+## 9. 为什么在循环中需要使用 key?
+![key](./images/key.png)
+
+## 10.函数组件和class组件的区别？
+![class](./images/class.png)
+
+## 11.什么是受控组件？
+
+## 12.多个组件中有公共逻辑，该如何抽离？
+![hoc](./images/HOC.png)
+
+## 13.redux 如何进行异步的请求？
+![thunk](./images/thunk.png)
+
+## 14.react-router 如何进行懒加载?
+![react-router](./images/react-router.png)
+
+## 15.什么是纯组件?
+![纯组件](./images/purecomponent.png)
+
+## 16.react 的事件对象和原生的事件对象有何区别？
+![dom-event](./images/dom-event.png)
+
+## 17.react的性能优化?
+![性能优化](./images/youhua.png)
+![性能优化2](./images/youhua2.png)
+![性能优化3](./images/youhua3.png)
+
+## 18.vue和react的区别？
+![react-vue](./images/react-vue.png)
+![react2-vue](./images/react-vue2.png)
 
 ****
 
@@ -739,15 +820,26 @@ new Vue({
 ## 7.1 get和post的区别：
     区别：
         1.get请求所携带的数据在url上，而post方法携带的数据在请求体中。
-        2.gety一般用于获取数据，post用于提交数据（提交的数据体积更大）。
+        2.get一般用于获取数据，post用于提交数据（提交的数据体积更大）。
         3.在安全性上，post用于防止crsf攻击。因为post请求的跨域需要后端配合。
 
 ## 7.2 http请求头中的content-type有什么作用:
+    作用：在原生post请求中需要设置content-type来告诉服务器客户端传入数据的格式，这样服务器端才能知道按照哪种格式来解析数据。
 ## 7.3 http和https之间的区别：
 ## 7.4 常见状态码：
 ## 7.5 http的三次握手和四次挥手：
 ## 7.6 跨域的几种方式，jsonp的原理：
-## 7.7 js原生发送get 和 post请求：
+    同源策略：
+        由于浏览器限制，客户端通过ajax向服务端请求数据时，必须保证客户端的协议，端口和域名与服务器端一致。
+        这样才能成功发送请求。
+    解决方法：
+        注：浏览器在加载图片，css,js时不受同源策略限制。所有的跨域都需要通过server端的配合实现。
+        1.jsonp:
+![jsonp](./images/jsonp.png)
+
+        2.cors:服务器端设置访问的权限
+![cors](./images/cors.jpg)
+
 
 ****
 
@@ -765,6 +857,7 @@ new Vue({
 
 # 十：业务：
 ## 10.1 轮播图的实现原理：
+
 ## 10.2 如何实现页面加载进度条：
 
 ****

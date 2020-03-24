@@ -221,10 +221,36 @@
 
 //函数可里化:
    
+//原生ajax的get请求：
+    function myGetAjxa(url,callback){
+        const xhr = xmlHttpRequest();
+        xhr.open('GET',url,true);
+        xhr.send();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4&&xhr.status===200){
+                callback(xhr.responseText);
+            }
+        }
+    }
 
+//原生ajax的post请求：
+    function myPostAjax(url,data,callback){
+        const xhr = new xmlHttpRequest();
+        xhr.setRequestHeader('Content-type','application/json');
+        xhr.open('POST',url,true);
+        xhr.send(data);
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4&&xhr.status===200){
+                callback(xhr.responseText);
+            }
+        }
+    }
 
+//实现一个bind函数：
 
+//es5和es6的方式实现继承:
 
+//给ul节点插入十个li并输出各自的index.
 
 
 
