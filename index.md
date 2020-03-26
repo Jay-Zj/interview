@@ -89,6 +89,7 @@
 ## 1.10 什么是事件委托，事件捕获，和事件冒泡
 >addEventListener 的第三个参数,默认为事件冒泡，true为捕获阶段触发，false为冒泡阶段触发
 
+    注意：冒泡和捕获最顶端是window
 ![捕获](./images/buhuomaopao)   
 
 ## 1.10 浏览器储存（cookies,sessionStorage,localStorage）的区别：
@@ -137,9 +138,10 @@
         aglin-item:center;
     }
     
-## 2.2 清除浮动的几种方法：
-    1.触发bfc
-    2.
+## 2.2 清除浮动的几种方法(父盒子高度塌陷)：
+    1.触发bfc，例如给父盒子加上一个overflow:hidden.
+    2.给子盒子最后再加上一个元素，给这个子元素设置clear:both。
+    3.当不方便在浮动元素后加盒子时，我们可以给父元素加一个伪元素，给伪元素设置clear:both.
 ## 2.3 css选择器的权重：
     !important
     内联样式（1000）
@@ -214,7 +216,8 @@
     }
 
 ## 2.10 rem和em
-
+    rem:是相对于html根元素的fontsize来确定自身的大小。
+    em:是相对于父元素的fontsize来确定自身的大小。
 ## 2.11 什么是bfc?如何触发bfc：
 >定义：BFC就是一个作用范围。可以把它理解成是一个独立的容器，并且这个容器的里box的布局，与这个容器外的毫不相干
 
@@ -254,6 +257,30 @@
 
 ## 2.15 元素的层叠登记：
 ![层叠上下文](./images/z-index)
+
+## 2.16 当有两个层叠的盒子当都有点击事件时如何只触发父盒子的事件？
+
+## 2.17 随着浏览器窗口变化自适应的正方形
+    一：利用新增单位Vw:
+```
+#square{  
+    width:30%;  
+    height:30vw;  
+    background:red;  
+} 
+```
+    二：利用padding-bottom撑开：由于margin, padding 的百分比数值是相对父元素的宽度计算的，只需将元素垂直方向的一个padding值设定为与width相同的百分比就可以制作出自适应正方形了。
+
+但要注意，仅仅设置padding-bottom是不够的，若向容器添加内容，内容会占据一定高度，为了解决这个问题，需要设置height: 0。
+
+```
+#square{  
+    width:30%;  
+    height:0;  
+    padding-bottom: 30%;  
+    background:red;  
+} 
+```
 
 # 三：js：
 ## 3.1数据类型
@@ -344,9 +371,11 @@
 []()
 ### 3.4.2 什么是词法作用域，什么是动态作用域：
     词法作用域：
-
+        函数的作用域在函数定义的时候就决定了。
     动态作用域：
+        函数的作用域是在函数调用的时候才决定的。
 
+![词法作用域](./images/zyy.png)      
 链接阅读:
 
 [JavaScript深入之词法作用域和动态作用域](https://segmentfault.com/a/1190000008972987)
@@ -363,12 +392,14 @@
     
     导致内存泄露的情况：
         1.当页面中元素被移除或替换时，若元素绑定的事件仍没被移除，在IE中不会作出恰当处理，此时要先手工移除事件，不然会存在内存泄露。
-        2.
-
+        2.闭包
 
 ## 3.5 面向对象
 ### 3.5.1.生成对象有哪几种方法：
-    
+    1.使用Object
+    2.使用工厂函数批量生产
+    3.使用构造函数
+    4.使用字面量的形式生成
 链接阅读：
 
 [JavaScript深入之创建对象的多种方式以及优缺点](https://segmentfault.com/a/1190000009359984)
@@ -410,10 +441,16 @@
 [JavaScirpt深入之从原型到原型链](https://segmentfault.com/a/1190000008959943)
 
 ### 3.5.6 继承的几种方法和各自的优缺点，es6中class继承的原理：
+    es6:继承使用extends
+
+链接阅读：
+    
+[阮一峰es6继承](https://es6.ruanyifeng.com/#docs/class-extends)
+
 ### 3.5.7 js的多继承如何实现？
 ### 3.5.8 对象有哪些遍历方法：
 ### 3.5.9 for in和 for of 的区别：
-
+    
 ## 3.6 es6新特性
 ### 3.6.1 es6有哪些新特性？let,const,var之间有什么区别：
     新特性：
@@ -618,11 +655,32 @@ new Vue({
 ### 4.3.1.vue-router的原理：
 ### 4.3.2.vue-router 的钩子函数有哪些？那个是可以全局使用的钩子函数？
 ### 4.3.3.vue-router 的hash,和history两种模式？
+    相同点：
+    不同点：
 ### 4.3.4.$router和$route有什么区别？
 ### 4.3.5.axios拦截器的使用：
 ### 4.3.6.axios拦截器：
 ### 4.3.7.axios底层是如何实现的：
 ### 4.3.8.vuex的原理及使用：
+    一：vuex概念：
+    1.state:
+![state1](./images/state1.png) 
+![state1](./images/state2.png)    
+    2.mutation
+    3.action
+![action](./images/action.png)
+![action2](./images/action2.png)
+    4.getters:类似于vue计算属性的功能
+![getters](./images/getters.png)
+![getters2](./images/getter2.png)
+
+    二：vuex用于组件中的概念：
+    1.dispatch
+    2.commit
+    3.mapState
+    4.mapMutation
+    5.mapAction
+    6.mapGetters
 
 ## 4.4 vue原理
 ### 4.4.1.vue响应式原理：
@@ -711,11 +769,21 @@ new Vue({
     因而可以在scu中判断props有无变化，控制组件是否渲染。
     2.需要配合不可变值一起使用不然可能出错。
 ## 5.描述redux 的单向数据流：
+    使用流程：
+        1.下载redux,
+        2.创建store文件夹，在里面创建index.js文件，在文件中从redux中引入createStore,使用createStore创建一个Store.
+        3.在store文件夹下创建一个reduser,reducer函数接受两个参数，一个是defaultState，另一个是action.
+        4.在index.js中引入reducer,传给创建出的store.
+        5.在组件引入store,通过store.getState()方法拿到store中的数据。
+
+![redux1](./images/redux-life.png)
 ![redux](./images/redux.png)
 ## 6.setstate的特性：
     特性：
         1.不可变值。
         2.可能是异步的。
+            在setTimeOut中使用this.setState()
+            this.setState()的第二个参数，是一个回调函数，在函数中可以拿到刚刚更新过的值。
         3.可能会合并
 
 ![setState](./images/setState.png)
@@ -724,7 +792,11 @@ new Vue({
     纯函数：返回一个新值，且没有副作用（不会改变其它值本身）。
     不可变值：
 ## 7.单组件的生命周期是怎么样的？有父子组件时又是怎么样的？
+    注意：
+    1.当组件第一次被渲染时只会执行mounting中的三个函数。
+    2.shouldComponentUpdate函数中若返回flase则组件不会重新渲染。
 
+![react-life](./images/react-life.webp)
 ## 8. ajax的请求应该放在哪个生命周期函数中？
     放在componentDidMount里
 ## 9. 为什么在循环中需要使用 key?
@@ -733,7 +805,12 @@ new Vue({
 ## 10.函数组件和class组件的区别？
 ![class](./images/class.png)
 
-## 11.什么是受控组件？
+## 11.受控组件和非受控组件的区别（value和defaultValue的区别）？
+    受控组件：组件中的状态被state所托管，用户操作改变State中的值，值反过来影响视图。形成了一个闭环。
+
+    非受控组件：组件的状态没有被react所托管，用户的操作影响不到组件的状态。
+
+    例如：react中的value属性值需要被state所托管，需要定义一个onChange的方法不然react会提示错误信息。defaultValue则类似与原生Input组件的value,不经过react，组件的状态不受控制。
 
 ## 12.多个组件中有公共逻辑，该如何抽离？
 ![hoc](./images/HOC.png)
