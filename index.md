@@ -838,12 +838,15 @@ new Vue({
 
 ****
 
-# 六：打包工具（webpack）:
-## 6.1.前端代码为什么要构建和打包：
+# 六：微信小程序
+
+
+# 七：打包工具（webpack）:
+## 7.1.前端代码为什么要构建和打包：
     1.兼容性处理，代码体积更小，代码规范
     2.高版本语言处理
     3.性能优化
-## 6.2 webpack常用配置有哪些：
+## 7.2 webpack常用配置有哪些：
     一：基本配置：
         1.css,less文件打包，压缩,拆分，兼容性处理
         2.js 文件的打包，压缩，编译，拆分
@@ -856,14 +859,14 @@ new Vue({
         1.多文件入口打包
         2.文件懒加载
 
-## 6.3 moudle ,chunk,和bundle有什么作用：
+## 7.3 moudle ,chunk,和bundle有什么作用：
     1.module:一个个源代码文件。
     2.chunk:多个module文件的集合。
     3.bundle：打包后输出的文件。
-## 6.4 loader和plugin的区别：
-## 6.5 webpack如何实现懒加载：
+## 7.4 loader和plugin的区别：
+## 7.5 webpack如何实现懒加载：
     使用import 导入一个包后返回一个promise,并单独打包一个chunk文件，在promise中去访问包的内容。
-## 6.6 webpack如何实现性能优化：
+## 7.6 webpack如何实现性能优化：
     打包构建时的性能优化：
         打包构建速度：
             1.开启HMR功能：即在devServer中配置，没有修改的文件不再进行打包构建。
@@ -886,26 +889,26 @@ new Vue({
             5.ingorePlugin 忽略加载某些文件
             6.cdn加速
             7.使用scope Hosting：将多个函数打包为一个函数，从而减小代码体积，避免内存消耗，提高代码的可读性。
-## 6.7 babel-tuntime和babel-polyfill的区别：
+## 7.7 babel-tuntime和babel-polyfill的区别：
     babel-polyfill：因为babel只做语法层面的解析，新的api不能解析，所以需要引入babel-polyfill做新api解析。
     babel-runtime: 在babel-polyfill做api解析时会污染全局变量，且多个文件都都使用相同的新api,会导致重复加载代码，
     导致文件体积变大，babel-runtime可以解决此问题。
 
 ****
 
-# 七：网络（http）
-## 7.1 get和post的区别：
+# 八：网络（http）
+## 8.1 get和post的区别：
     区别：
         1.get请求所携带的数据在url上，而post方法携带的数据在请求体中。
         2.get一般用于获取数据，post用于提交数据（提交的数据体积更大）。
         3.在安全性上，post用于防止crsf攻击。因为post请求的跨域需要后端配合。
 
-## 7.2 http请求头中的content-type有什么作用:
+## 8.2 http请求头中的content-type有什么作用:
     作用：在原生post请求中需要设置content-type来告诉服务器客户端传入数据的格式，这样服务器端才能知道按照哪种格式来解析数据。
-## 7.3 http和https之间的区别：
-## 7.4 常见状态码：
-## 7.5 http的三次握手和四次挥手：
-## 7.6 跨域的几种方式，jsonp的原理：
+## 83 http和https之间的区别：
+## 8.4 常见状态码：
+## 8.5 http的三次握手和四次挥手：
+## 8.6 跨域的几种方式，jsonp的原理：
     同源策略：
         由于浏览器限制，客户端通过ajax向服务端请求数据时，必须保证客户端的协议，端口和域名与服务器端一致。
         这样才能成功发送请求。
@@ -920,33 +923,86 @@ new Vue({
 
 ****
 
-# 八：设计模式
-## 8.1 js的设计模式有哪些：
+# 九：tyscript
+## 9.1类型系统：
+    1.常见类型：
+        number类型：
+            const num:number=1;
+        string类型：
+            const str:string='jay';
+        boolean类型：
+            const boo:boolean=true;
+        null类型：
+            const myNull:null=null;
+        undefind类型：
+            const undef:undefind=undefind;
+![tsType](./images/tsType.png)
+
+    2.数组：
+
+![array](./images/array.png)
+
+    3.元祖类型：
+
+![tuple](./images/tuple.png) 
+
+    4.枚举类型：
+
+![meiju](./images/meiju.png)
+![meiju](./images/meiju2.png)
+
+    5.any类型：
+
+![any](./images/any.png)
+
+    6.void类型：
+
+![void](./images/void.png)
+
+    7.never类型：
+
+![never](./images/never.png)
+
+    8.类型推断：
+
+![leixintuiduan](./images/leixintuiduan.png)
+
+    9.联合类型：
+
+![lianhe](./images/lianhe.png)
+
+## 9.2函数：
+## 9.3面向对象：
+
+# 十：nodejs
+
+# 十一：设计模式
+## 11.1 js的设计模式有哪些：
     1.单例设计模式
     2.发布订阅者模式
     3.工厂模式
 
 ****
 
-# 九：数据结构与算法：
+# 十二：数据结构与算法：
  
 ****
 
-# 十：业务：
-## 10.1 轮播图的实现原理：
+# 十三：业务：
+## 13.1 轮播图的实现原理：
 
-## 10.2 如何实现页面加载进度条：
+## 13.2 如何实现页面加载进度条：
 
 ****
 
-# 十一：性能优化
+# 十四：性能优化
 
 链接阅读：
 [浏览器缓存知识小结及应用](https://www.cnblogs.com/lyzg/p/5125934.html)
 
 ****
 
-# 十二：前端安全
+# 十五：前端安全
 ## 1.xss攻击：
     原理：在要求输入的内容中插入一个script脚本，当用户请求到资源后，脚本在用户的浏览器中运行
     从而获取用户的cookie等私密信息。
