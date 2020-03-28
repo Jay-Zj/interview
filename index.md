@@ -972,8 +972,16 @@ new Vue({
 ![lianhe](./images/lianhe.png)
 
 ## 9.2函数：
+![function](./images/function.png)
+![function2](./images/function2.png)
+![function3](./images/function3.png)
+![function4](./images/function4.png)
+![function5](./images/function5.png)
 ## 9.3面向对象：
+    一：class类形式
 
+![class1](./images/class1.png)
+    
 # 十：nodejs
 
 # 十一：设计模式
