@@ -27,6 +27,7 @@
 
 
 // 浅拷贝
+//  方法一：
     function shallowCopy(o){
         if(typeof o !=='object') return;
         let newObj = o instanceof Array?[]:{};
@@ -37,6 +38,10 @@
         }
         return newObj;
     }
+
+// 方法二：
+// 使用Object.assign()
+
 
 //防抖：函数需要被频繁触发，在一段时间内，函数只执行最后一次
 //适用于模糊查询，表单防抖。（https://blog.csdn.net/web_xyk/article/details/80165824）

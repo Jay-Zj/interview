@@ -325,6 +325,8 @@
 
 链接阅读:
 
+[JavaScript 深入之头疼的类型转换(上)](https://github.com/mqyqingfeng/Blog/issues/159)
+
 [深入理解JavaScript数据类型转换](https://juejin.im/post/5c4edc1ef265da6144206911)
 
 ### 3.1.4 数据运算：
@@ -367,8 +369,8 @@
 ### 3.4.1 什么是作用域？什么是作用域链？
 
 链接阅读：
+[JavaScript深入之作用域链](https://github.com/mqyqingfeng/Blog/issues/6)
 
-[]()
 ### 3.4.2 什么是词法作用域，什么是动态作用域：
     词法作用域：
         函数的作用域在函数定义的时候就决定了。
@@ -377,7 +379,6 @@
 
 ![词法作用域](./images/zyy.png)      
 链接阅读:
-
 [JavaScript深入之词法作用域和动态作用域](https://segmentfault.com/a/1190000008972987)
 
 ### 3.4.3 闭包是什么？闭包的优缺点：
@@ -394,6 +395,9 @@
         1.当页面中元素被移除或替换时，若元素绑定的事件仍没被移除，在IE中不会作出恰当处理，此时要先手工移除事件，不然会存在内存泄露。
         2.闭包
 
+### 3.4.5 函数声明和函数表达式的区别？
+![functionshow](./images/functionshow.png)
+
 ## 3.5 面向对象
 ### 3.5.1.生成对象有哪几种方法：
     1.使用Object
@@ -409,10 +413,12 @@
     2.将this指向这个对象。
     3.将函数执行一遍。
     4.将这个对象返回。
+
 ### 3.5.3 函数中this的指向,改变this指向有哪几种方法：
     基本原则：指向最后调用他的那个对象。
         例：Obj.fn() this指向Obj
     注：若函数前无明显对象，则由全局对象window调用。
+
 ### 3.5.4 call/apply/bind之间的区别，如何手动实现一个bind:
 >call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。
 
@@ -450,7 +456,15 @@
 ### 3.5.7 js的多继承如何实现？
 ### 3.5.8 对象有哪些遍历方法：
 ### 3.5.9 for in和 for of 的区别：
-    
+### 3.5.10 new Object()和Object.create()的区别：
+    1.使用new Object()创建对象的方式等同于用字面量{}的形式创建对象，其对象的原型为Object.prototype。
+
+    2.Object.create(null)生产出的对象没有原型。
+
+    3.Object.create({...})生产的对象可以指定原型。其原型为create()方法的参数。
+
+    注：Object.create({...})方法的作用是创建一个空对象，并将空对象的原型指向传入的对象。
+
 ## 3.6 es6新特性
 ### 3.6.1 es6有哪些新特性？let,const,var之间有什么区别：
     新特性：
@@ -516,6 +530,12 @@
 链接阅读
 
 [Map和Set](https://www.liaoxuefeng.com/wiki/1022910821149312/1023024181109440)
+
+## 3.7 正则表达式
+
+链接阅读：
+
+[正则表达式30分钟入门教程](https://deerchao.cn/tutorials/regex/regex.htm)
 
 ****
 
