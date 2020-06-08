@@ -456,6 +456,7 @@
 ### 3.5.7 js的多继承如何实现？
 ### 3.5.8 对象有哪些遍历方法：
 ### 3.5.9 for in和 for of 的区别：
+    
 ### 3.5.10 new Object()和Object.create()的区别：
     1.使用new Object()创建对象的方式等同于用字面量{}的形式创建对象，其对象的原型为Object.prototype。
 
@@ -788,7 +789,7 @@ new Vue({
     1.性能优化，在react组件中，当父组件变化时，无论子组件的props有无变化都将被重新渲染。
     因而可以在scu中判断props有无变化，控制组件是否渲染。
     2.需要配合不可变值一起使用不然可能出错。
-## 5.描述redux 的单向数据流：
+## 5.描述redux 的单向数据流，并阐述redux的原理：
     使用流程：
         1.下载redux,
         2.创建store文件夹，在里面创建index.js文件，在文件中从redux中引入createStore,使用createStore创建一个Store.
@@ -855,6 +856,9 @@ new Vue({
 ## 18.vue和react的区别？
 ![react-vue](./images/react-vue.png)
 ![react2-vue](./images/react-vue2.png)
+
+## 19.hooks的设计理念，以及常用的hooks介绍
+
 
 ****
 
@@ -923,10 +927,39 @@ new Vue({
         2.get一般用于获取数据，post用于提交数据（提交的数据体积更大）。
         3.在安全性上，post用于防止crsf攻击。因为post请求的跨域需要后端配合。
 
-## 8.2 http请求头中的content-type有什么作用:
-    作用：在原生post请求中需要设置content-type来告诉服务器客户端传入数据的格式，这样服务器端才能知道按照哪种格式来解析数据。
-## 83 http和https之间的区别：
+## 8.2 http请求头中有哪些字段分别有什么作用:
+    常见的Request Headers:
+        1. content-type：在原生post请求中需要设置content-type来告诉服务器客户端传入数据的格式，这样服务器端才能知道按照哪种格式来解析数据。
+        2. Accept：浏览器可以接收的数据格式
+        3. Accept-Encoding：浏览器可以接收的压缩算法，如gzip
+        4. Accept-Languange：浏览器可接收的语言，如zh-CH
+        5. Connection：keep-alive: 一次tcp连接重复使用
+        6. cookie: 后端存储在浏览器当中的标识
+        7. host:请求的域名
+        8. User-Agent简称UA浏览器信息
+    常见的Response Headers:
+        1. Content-type: 返回的数据格式，如application/json
+        2. Content-length:返回的数据大小，多少字节
+        3. Content-Encoding: 返回数据的压缩算法，如gzip
+        4. Set-Cookie: 修改cookie
+
+## 8.3 http和https之间的区别：
+
 ## 8.4 常见状态码：
+    1. 1xx表示服务器收到请求
+    2. 2xx表示请求成功
+        200:请求成功
+    3. 3xx重定向
+        301:永久重定向（配合location,浏览器自动处理）
+        302:临时重定向（配合location,浏览器自动处理）
+        304:资源未被修改（资源没过期）
+    4. 4xx客户端错误
+        403:没有权限访问
+        404:资源没有找到
+    5. 5xx服务端错误
+        500:服务器错误
+        504:网关超时
+
 ## 8.5 http的三次握手和四次挥手：
 ## 8.6 跨域的几种方式，jsonp的原理：
     同源策略：
@@ -939,7 +972,36 @@ new Vue({
 
         2.cors:服务器端设置访问的权限
 ![cors](./images/cors.jpg)
+        3.本地代理
+## 8.7 http1.0和http2.0的区别:
+## 8.8 什么是Restful API:
+![restful](./images/restful.png)
+## 8.9 http 缓存
+    1.为什么需要缓存？
+        一个应用网络相对于cpu处理而言是非常慢的，比较容易造成短板效应，所以需要从耗时最高的网络请求方面进行优化，缓存是优化网络请求的的一个重要解决方案。
+    2. 哪些资源可以被缓存？
+        静态资源文件如：js,css,img可以被缓存，经常变化的如：html，业务数据等不需缓存
+    3. 什么是强制缓存
 
+    4. 什么是协商缓存
+        4.1 是一种服务端缓存策略，（不是将资源缓存到服务端，是客户端去服务器取资源，服务器发现资源并没有变化，则告诉客户端可以用本地的资源）
+        4.2 服务器判断客户端资源，是否和服务器端资源一样
+        4.3 一致返回304，否则返回200和最新的资源
+
+![cace](./images/http-cace.png)
+![last-modifiy](./images/last-modifiy.png)
+![etag](./images/etag.png)
+![last-etag](./images/lats-etag.png)
+
+    5. http 完整地缓存流程
+![http-com](./images/http-com.png)
+
+链接阅读：
+[浏览器缓存知识小结及应用](https://www.cnblogs.com/lyzg/p/5125934.html)
+    6.刷新对缓存的影响
+        正常操作：强制缓存有效，协商缓存有效
+        手动刷新：强制缓存失效，协商缓存有效
+        强制刷新：强制缓存失效，协商缓存失效    
 
 ****
 
@@ -1001,7 +1063,7 @@ new Vue({
     一：class类形式
 
 ![class1](./images/class1.png)
-    
+
 # 十：nodejs
 
 # 十一：设计模式
@@ -1025,8 +1087,6 @@ new Vue({
 
 # 十四：性能优化
 
-链接阅读：
-[浏览器缓存知识小结及应用](https://www.cnblogs.com/lyzg/p/5125934.html)
 
 ****
 
