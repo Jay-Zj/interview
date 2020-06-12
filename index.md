@@ -92,7 +92,7 @@
     注意：冒泡和捕获最顶端是window
 ![捕获](./images/buhuomaopao)   
 
-## 1.10 浏览器储存（cookies,sessionStorage,localStorage）的区别：
+## 1.11 浏览器储存（cookies,sessionStorage,localStorage）的区别：
     cookie：
         1.cookie本身是用于浏览器和服务器通讯使用。
         2.cookie是被借用来做本地存储的。
@@ -370,7 +370,7 @@
     作用域：本质是程序储存变量和访问变量的一套规则，在js中有三种作用域，即：全局作用域，函数作用域，块级作用域。
 
     作用域链：作用域之间的相互嵌套就形成了作用域链。
-    
+
 链接阅读：
 [JavaScript深入之作用域链](https://github.com/mqyqingfeng/Blog/issues/6)
 
@@ -677,6 +677,9 @@ new Vue({
     mixins:[mymixin]
 })
 ```
+
+### 4.2.8 vue 3.0的新特性：
+
 ## 4.3 vue插件
 ### 4.3.1.vue-router的原理：
 ### 4.3.2.vue-router 的钩子函数有哪些？那个是可以全局使用的钩子函数？
@@ -779,22 +782,22 @@ new Vue({
 ****
 
 # 五：react
-## 1.react组件如何通信：
+## 5.1.react组件如何通信：
     1.子传父使用传递事件的形式，在子组件触发父组件中的方法。
     2.父传子使用props。
     3.自定义事件的形式。
     4.redux和context
-## 2.react jsx的本质是什么：
+## 5.2.react jsx的本质是什么：
 
-## 3.context 是什么有何作用：
+## 5.3.context 是什么有何作用：
     作用：父组件向所有的子孙组件传递数据。
     应用：比如传递语言，主题色之类的数据。
 
-## 4.SCU的用途：
+## 5.4.SCU的用途：
     1.性能优化，在react组件中，当父组件变化时，无论子组件的props有无变化都将被重新渲染。
     因而可以在scu中判断props有无变化，控制组件是否渲染。
     2.需要配合不可变值一起使用不然可能出错。
-## 5.描述redux 的单向数据流，并阐述redux的原理：
+## 5.5.描述redux 的单向数据流，并阐述redux的原理：
     使用流程：
         1.下载redux,
         2.创建store文件夹，在里面创建index.js文件，在文件中从redux中引入createStore,使用createStore创建一个Store.
@@ -804,7 +807,7 @@ new Vue({
 
 ![redux1](./images/redux-life.png)
 ![redux](./images/redux.png)
-## 6.setstate的特性：
+## 5.6.setstate的特性：
     特性：
         1.不可变值。
         2.可能是异步的。
@@ -814,55 +817,55 @@ new Vue({
 
 ![setState](./images/setState.png)
 
-## 6.什么是纯函数，什么是不可变值：
+## 5.7.什么是纯函数，什么是不可变值：
     纯函数：返回一个新值，且没有副作用（不会改变其它值本身）。
     不可变值：
-## 7.单组件的生命周期是怎么样的？有父子组件时又是怎么样的？
+## 5.8.单组件的生命周期是怎么样的？有父子组件时又是怎么样的？
     注意：
     1.当组件第一次被渲染时只会执行mounting中的三个函数。
     2.shouldComponentUpdate函数中若返回flase则组件不会重新渲染。
 
 ![react-life](./images/react-life.webp)
-## 8. ajax的请求应该放在哪个生命周期函数中？
+## 5.9. ajax的请求应该放在哪个生命周期函数中？
     放在componentDidMount里
-## 9. 为什么在循环中需要使用 key?
+## 5.10. 为什么在循环中需要使用 key?
 ![key](./images/key.png)
 
-## 10.函数组件和class组件的区别？
+## 5.11.函数组件和class组件的区别？
 ![class](./images/class.png)
 
-## 11.受控组件和非受控组件的区别（value和defaultValue的区别）？
+## 5.12.受控组件和非受控组件的区别（value和defaultValue的区别）？
     受控组件：组件中的状态被state所托管，用户操作改变State中的值，值反过来影响视图。形成了一个闭环。
 
     非受控组件：组件的状态没有被react所托管，用户的操作影响不到组件的状态。
 
     例如：react中的value属性值需要被state所托管，需要定义一个onChange的方法不然react会提示错误信息。defaultValue则类似与原生Input组件的value,不经过react，组件的状态不受控制。
 
-## 12.多个组件中有公共逻辑，该如何抽离？
+## 5.13.多个组件中有公共逻辑，该如何抽离？
 ![hoc](./images/HOC.png)
 
-## 13.redux 如何进行异步的请求？
+## 5.14.redux 如何进行异步的请求？
 ![thunk](./images/thunk.png)
 
-## 14.react-router 如何进行懒加载?
+## 5.15.react-router 如何进行懒加载?
 ![react-router](./images/react-router.png)
 
-## 15.什么是纯组件?
+## 5.16.什么是纯组件?
 ![纯组件](./images/purecomponent.png)
 
-## 16.react 的事件对象和原生的事件对象有何区别？
+## 5.17.react 的事件对象和原生的事件对象有何区别？
 ![dom-event](./images/dom-event.png)
 
-## 17.react的性能优化?
+## 5.18.react的性能优化?
 ![性能优化](./images/youhua.png)
 ![性能优化2](./images/youhua2.png)
 ![性能优化3](./images/youhua3.png)
 
-## 18.vue和react的区别？
+## 5.19.vue和react的区别？
 ![react-vue](./images/react-vue.png)
 ![react2-vue](./images/react-vue2.png)
 
-## 19.hooks的设计理念，以及常用的hooks介绍
+## 5.20.hooks的设计理念，以及常用的hooks介绍
 
 
 ****
@@ -982,13 +985,26 @@ new Vue({
 ## 8.8 什么是Restful API:
 ![restful](./images/restful.png)
 ## 8.9 http 缓存
-    1.为什么需要缓存？
+### 8.9.1 为什么需要缓存？
         一个应用网络相对于cpu处理而言是非常慢的，比较容易造成短板效应，所以需要从耗时最高的网络请求方面进行优化，缓存是优化网络请求的的一个重要解决方案。
-    2. 哪些资源可以被缓存？
+### 8.9.2. 哪些资源可以被缓存？
         静态资源文件如：js,css,img可以被缓存，经常变化的如：html，业务数据等不需缓存
-    3. 什么是强制缓存
+### 8.9.3. 什么是强制缓存
 
-    4. 什么是协商缓存
+![qzhc](./images/qzhc.png)
+
+    cache-control的值：
+
+        max-age:资源缓存的最长时间
+        no-cache:不使用浏览器本地缓存，直接访问服务器
+        no-store:不使用浏览器本地缓存，也不使用服务器端的缓存
+
+    关于Expires:
+        1.同在Response Headers中
+        2.同为控制缓存过期
+        3.已被Cache-Control代替
+
+### 8.9.4. 什么是协商缓存
         4.1 是一种服务端缓存策略，（不是将资源缓存到服务端，是客户端去服务器取资源，服务器发现资源并没有变化，则告诉客户端可以用本地的资源）
         4.2 服务器判断客户端资源，是否和服务器端资源一样
         4.3 一致返回304，否则返回200和最新的资源
@@ -998,13 +1014,13 @@ new Vue({
 ![etag](./images/etag.png)
 ![last-etag](./images/lats-etag.png)
 
-    5. http 完整地缓存流程
+### 8.9.5. http 完整地缓存流程
 ![http-com](./images/http-com.png)
 
 链接阅读：
 [浏览器缓存知识小结及应用](https://www.cnblogs.com/lyzg/p/5125934.html)
 
-    6.刷新对缓存的影响?
+### 8.9.6.刷新对缓存的影响?
         正常操作：强制缓存有效，协商缓存有效
         手动刷新：强制缓存失效，协商缓存有效
         强制刷新：强制缓存失效，协商缓存失效    
@@ -1071,6 +1087,7 @@ new Vue({
 ![class1](./images/class1.png)
 
 # 十：nodejs
+## 10.1 node中的事件循环和浏览器中的事件循环有何区别？
 
 # 十一：设计模式
 ## 11.1 js的设计模式有哪些：
