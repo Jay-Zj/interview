@@ -539,6 +539,23 @@
 
 ### 3.5.9 for in 和 for of 的区别：
 
+    解释：for of实际上遍历的是数据结构的Symbol.iterator属性，因此数据结构中只要有iterator属性且此属性是一个可迭代对象,则都可以被for od迭代。
+
+    具有Symbol.iterator属性的数据结构：
+        1.数组
+        2.Set
+        3.Map
+        4.类数组对象，如 arguments 对象、DOM NodeList 对象
+        5.Generator 对象
+        6.字符串
+
+    区别：1.for in 可迭代数组和对象，而for of 不能迭代对象
+         2.for in 迭代后的是键而for of迭代后的是值
+
+链接阅读：
+
+[ES6 系列之迭代器与 for of](https://juejin.im/post/6844903635868975111#heading-7)
+
 ### 3.5.10 new Object()和 Object.create()的区别：
 
     1.使用new Object()创建对象的方式等同于用字面量{}的形式创建对象，其对象的原型为Object.prototype。
@@ -1019,9 +1036,31 @@ new Vue({
 
 ## 5.20.hooks 的设计理念，以及常用的 hooks 介绍
 
+    设计理念：将ui抽象成一个函数。hooks的出现是为了更好地解耦。
+
+    1.userState:用于取代state和setState，更好地实现业务逻辑的解耦。
+
+    2.useEffect:可用于取代部分的生命周期
+
+    3.useMemo：可用于缓存数据，取代生命周期SCU
+
+    4.useCallback:缓存一个函数
+
+    5.useRef:用于获取dom元素
+
+    6.useReducer:模拟reducer的操作
+
+    7.userContext:用于取代conText
+
 ## 5.21.redux 实现原理
 
-## 5.22 react 新旧生命周期函数的区别
+    本质：采用了发布订阅者模式
+
+## 5.22 react 新旧生命周期函数的区别？
+
+    特点：去除了will类的生命周期函数，其原因是此类函数在render之前可能会造成重复执行，所以需要去除
+
+![react新生命周期](./images/newReactLife.webp)
 
 ---
 
