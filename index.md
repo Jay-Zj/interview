@@ -1063,6 +1063,10 @@ new Vue({
 
 ![react新生命周期](./images/newReactLife.webp)
 
+## 5.23 react 新版 fiber 架构有什么特点：
+
+## 5.24 react 之前的哪些功能是 react 替换不了的：
+
 ---
 
 # 六：微信小程序
